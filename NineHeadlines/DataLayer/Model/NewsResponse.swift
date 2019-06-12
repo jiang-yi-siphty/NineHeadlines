@@ -20,9 +20,12 @@ struct NewsResponse: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decodeIfPresent(Int.self, forKey: .id)
         assets = try container.decodeIfPresent([Asset].self, forKey: .assets)
-        let timeStampDouble = try container
-            .decodeIfPresent(Double.self, forKey: .timeStamp) ?? nil
-        timeStamp =  Date(timeIntervalSince1970: timeStampDouble ?? 0)
+        if let timeStampInterval = try container
+            .decodeIfPresent(TimeInterval.self, forKey: .timeStamp) ?? nil {
+            timeStamp =  Date(timeIntervalSince1970: timeStampInterval / 1000)
+        } else {
+            timeStamp = nil
+        }
     }
 }
 
@@ -34,6 +37,22 @@ struct Asset: Codable {
     let byLine: String?
     let relatedImages: [RelatedImage]?
     let sponsored: Bool?
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        url = try container.decodeIfPresent(URL.self, forKey: .url)
+        if let timeStampInterval = try container
+            .decodeIfPresent(TimeInterval.self, forKey: .timeStamp) ?? nil {
+            timeStamp =  Date(timeIntervalSince1970: timeStampInterval / 1000)
+        } else {
+            timeStamp = nil
+        }
+        headline = try container.decodeIfPresent(String.self, forKey: .headline)
+        theAbstract = try container.decodeIfPresent(String.self, forKey: .theAbstract)
+        byLine = try container.decodeIfPresent(String.self, forKey: .byLine)
+        relatedImages = try container.decodeIfPresent([RelatedImage].self, forKey: .relatedImages)
+        sponsored = try container.decodeIfPresent(Bool.self, forKey: .sponsored)
+    }
 }
 
 struct RelatedImage: Codable {

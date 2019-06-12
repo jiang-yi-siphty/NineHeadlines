@@ -110,11 +110,19 @@ extension HeadlinesViewController: UITableViewDataSource, UITableViewDelegate {
         cell.headlineTitleLabel.text = asset?.headline
         cell.headlineByLineLabel.text = asset?.byLine
         cell.headlineSponsoredLabel.isHidden = !(asset?.sponsored ?? false)
+        if let date = asset?.timeStamp {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd MMM yyyy"
+            cell.headlineDateTimeLabel.text = formatter.string(from: date)
+        } else {
+            cell.headlineDateTimeLabel.text = ""
+        }
         cell.headlineAbstractTextView.text = asset?.theAbstract ?? ""
         if let imageURL = viewModel.bestThumbnailImageURL(at: row) {
             cell.headlineImageView.imageFromURL(imageURL, 
                                                 placeHolder: UIImage(named: "newsPlaceholder"))
         } 
+        
     }
 }
 

@@ -69,6 +69,5 @@ class HeadlinesViewModel {
             images.sort(by: {$0 < $1})
             return images.first?.url
         }
-        return nil 
     }  
 }
