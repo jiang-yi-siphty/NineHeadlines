@@ -127,8 +127,6 @@ extension HeadlinesViewController: UITableViewDataSource, UITableViewDelegate {
                         self?.tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .none)
           }
         }
-        cell.layoutIfNeeded()
-        
     }
 }
 

@@ -6,6 +6,12 @@
 //  Copyright © 2019 Siphty Pty Ltd. All rights reserved.
 //
 
+/*
+   Comment: 
+   I was overconfident to build this async loading image extension.
+   After struggling with image layouts. I decide to 
+   adopt Kingfisher pod as async image loading framework.
+ */
 import Foundation
 import UIKit
 
@@ -23,7 +29,7 @@ extension UIImageView {
         
         URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             guard error == nil else {
-                print("ERROR LOADING IMAGES FROM URL: \(error.debugDescription)")
+                print("LOADING ERROR: \(error.debugDescription)")
                 DispatchQueue.main.async { [weak self] in
                     self?.image = placeHolder
                 }
@@ -34,7 +40,6 @@ extension UIImageView {
                 if let downloadedImage = UIImage(data: data) {
                     imageCache.setObject(downloadedImage, 
                                          forKey: NSString(string: url.absoluteString))
-//                    self?.bounds = CGRect(x: 0, y: 0, width: downloadedImage.size.width, height: downloadedImage.size.height)
                     self?.image = downloadedImage
                     self?.contentMode = .scaleAspectFit
                 }
