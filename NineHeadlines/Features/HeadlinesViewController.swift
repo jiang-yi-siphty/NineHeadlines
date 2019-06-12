@@ -34,10 +34,13 @@ class HeadlinesViewController: UIViewController, LoadingCapable {
     }
     
     func prepareViewModel() {
+        showLoadingView()
+        
         viewModel.updated = { 
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 self.tableView.reloadData()
+                self.hideLoadingView()
             }
         }
         
@@ -65,6 +68,8 @@ class HeadlinesViewController: UIViewController, LoadingCapable {
         tableView.reloadData()
         tableView.estimatedRowHeight = 144.0
         tableView.rowHeight = UITableView.automaticDimension 
+        tableView.separatorStyle = .none
+        
     }
     
     // MARK: - private func
