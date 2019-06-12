@@ -33,6 +33,7 @@ struct Asset: Codable {
     let theAbstract: String?
     let byLine: String?
     let relatedImages: [RelatedImage]?
+    let sponsored: Bool?
 }
 
 struct RelatedImage: Codable {

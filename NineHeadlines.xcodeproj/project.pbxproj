@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A24B929122B0C07E00284CB2 /* LoadingCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24B929022B0C07E00284CB2 /* LoadingCapable.swift */; };
 		A2536A5E22ADEE4400FC9CCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2536A5D22ADEE4400FC9CCB /* AppDelegate.swift */; };
 		A2536A6522ADEE4500FC9CCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2536A6422ADEE4500FC9CCB /* Assets.xcassets */; };
 		A2536A6822ADEE4500FC9CCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2536A6622ADEE4500FC9CCB /* LaunchScreen.storyboard */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A24B929022B0C07E00284CB2 /* LoadingCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCapable.swift; sourceTree = "<group>"; };
 		A2536A5A22ADEE4400FC9CCB /* NineHeadlines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NineHeadlines.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2536A5D22ADEE4400FC9CCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2536A6422ADEE4500FC9CCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A24B928D22B0BA4F00284CB2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A24B929022B0C07E00284CB2 /* LoadingCapable.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		A2536A5122ADEE4300FC9CCB = {
 			isa = PBXGroup;
 			children = (
@@ -107,8 +117,7 @@
 		A2536A5C22ADEE4400FC9CCB /* NineHeadlines */ = {
 			isa = PBXGroup;
 			children = (
-				A2536A7622ADEF5700FC9CCB /* Extensions */,
-				A2536A7122ADEE7200FC9CCB /* SupportingFile */,
+				A24B928D22B0BA4F00284CB2 /* Common */,
 				A2536A7022ADEE6A00FC9CCB /* DataLayer */,
 				A2536A6F22ADEE6000FC9CCB /* Features */,
 				A2536A5D22ADEE4400FC9CCB /* AppDelegate.swift */,
@@ -140,13 +149,6 @@
 			path = DataLayer;
 			sourceTree = "<group>";
 		};
-		A2536A7122ADEE7200FC9CCB /* SupportingFile */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SupportingFile;
-			sourceTree = "<group>";
-		};
 		A2536A7222ADEE9400FC9CCB /* Store */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,13 +172,6 @@
 				A2D5537E22AE21A300423FB0 /* NewsResponse.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		A2536A7622ADEF5700FC9CCB /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		A2536A7C22ADF1F400FC9CCB /* NineHeadlinesTests */ = {
@@ -325,6 +320,7 @@
 				A2D5538C22AE83A700423FB0 /* HeadlinesStore.swift in Sources */,
 				A2D5537D22ADFA8B00423FB0 /* ApiService.swift in Sources */,
 				A286A8D322B00AC300D789D4 /* HeadlineTableViewCell.swift in Sources */,
+				A24B929122B0C07E00284CB2 /* LoadingCapable.swift in Sources */,
 				A2D5539022AE8C6E00423FB0 /* HeadlinesViewModel.swift in Sources */,
 				A2D5537B22ADF9EA00423FB0 /* ApiClient.swift in Sources */,
 			);

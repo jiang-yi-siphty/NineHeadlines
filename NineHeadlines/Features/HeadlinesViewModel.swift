@@ -21,6 +21,7 @@ class HeadlinesViewModel {
     var numberOfRows: Int {
         return store.headlines?.count ?? 0
     }
+  
     
     
     // MARK: Funcs
@@ -51,11 +52,12 @@ class HeadlinesViewModel {
             }
         }
     }
-    
-    func url(at indexPath: IndexPath) -> URL? {
-        guard indexPath.row < store.headlines?.count ?? 0 else { return nil }
-        return store.headlines?[indexPath.row].url 
-    }
+
+  
+  func headline(at row: Int) -> Asset? {
+    guard row < store.headlines?.count ?? 0 else { return nil }
+    return store.headlines?[row]
+  }
     
     
 }

@@ -11,7 +11,13 @@ import WebKit
 
 class NewsWebViewController: UIViewController {
     var url: URL?
-    private var webView = WKWebView()
+    
+    lazy var webView: WKWebView = {
+        let webView = WKWebView(frame: .zero, configuration: WKWebViewConfiguration())
+        webView.navigationDelegate = self
+        webView.uiDelegate = self
+        return webView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +33,17 @@ class NewsWebViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         guard let url = url else { return }
+        showLoadingView()
         webView.load(URLRequest(url: url))
+    }
+    
+}
+
+extension NewsWebViewController: WKNavigationDelegate, WKUIDelegate, LoadingCapable {
+    
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) 
+    {
+        hideLoadingView()
     }
     
 }

@@ -12,8 +12,8 @@
  */
 import UIKit
 
-class HeadlinesViewController: UIViewController {
-
+class HeadlinesViewController: UIViewController, LoadingCapable {
+    
     private var tableView = UITableView()
     lazy var viewModel: HeadlinesViewModel = {
         return HeadlinesViewModel()
@@ -35,7 +35,8 @@ class HeadlinesViewController: UIViewController {
     func prepareViewModel() {
         viewModel.updated = { 
             DispatchQueue.main.async { [weak self] in
-            	self?.tableView.reloadData()
+                guard let self = self else { return }
+                self.tableView.reloadData()
             }
         }
         
@@ -71,7 +72,7 @@ class HeadlinesViewController: UIViewController {
         alert.addAction( UIAlertAction(title: .alertButtonText, style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
-
+    
 }
 
 // MARK: - TableView
@@ -81,10 +82,11 @@ extension HeadlinesViewController: UITableViewDataSource, UITableViewDelegate {
                    numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRows
     }
-   
+    
     func tableView(_ tableView: UITableView, 
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: .tableViewCellID, for: indexPath) as? HeadlineTableViewCell{
+            config(cell, at: indexPath.row)
             return cell
         }
         fatalError("Failed to locate a cell with ReusableCell Identifier: " + .tableViewCellID)
@@ -92,17 +94,23 @@ extension HeadlinesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, 
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 500//UITableView.automaticDimension
+        return 370
     }
     
     func tableView(_ tableView: UITableView, 
                    didSelectRowAt indexPath: IndexPath) {
-//        guard let url = viewModel.url(at: indexPath) else { return }
-//        let newsWebViewController = NewsWebViewController()
-//        newsWebViewController.url = url
-//        let navigationWrapper = UINavigationController(rootViewController: newsWebViewController)
-//        navigationController?.present(navigationWrapper, animated: true, completion: nil)
-//        present(newsWebViewController, animated: true, completion: nil)
+                guard let url = viewModel.headline(at: indexPath.row)?.url else { return }
+                let newsWebViewController = NewsWebViewController()
+                newsWebViewController.url = url
+                navigationController?.pushViewController(newsWebViewController, animated: true)
+    }
+    
+    private func config(_ cell: HeadlineTableViewCell, at row: Int) {
+        let asset = viewModel.headline(at: row)
+        cell.headlineTitleLabel.text = asset?.headline
+        cell.headlineByLineLabel.text = asset?.byLine
+        cell.headlineSponsoredLabel.isHidden = !(asset?.sponsored ?? false)
+        cell.headlineAbstractTextView.text = asset?.theAbstract ?? ""
     }
 }
 

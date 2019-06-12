@@ -14,8 +14,7 @@ final class HeadlineTableViewCell: UITableViewCell {
         didSet {
         }
     }
-    
-    @IBOutlet var headlineTitleContainerView: UIView!
+  
     @IBOutlet var headlineImageView: UIImageView! {
         didSet {
             guard let image = UIImage(named: "thumbnail") else {
@@ -24,17 +23,26 @@ final class HeadlineTableViewCell: UITableViewCell {
             headlineImageView.image = image
         }
     }
-    
-    @IBOutlet var backgroundGradientView: UIView! {
-        didSet {
-            backgroundGradientView.backgroundColor = UIColor.black
-//            let gradient = CAGradientLayer()
-//            gradient.frame = backgroundGradientView.bounds
-//            gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
-//            gradient.locations = [0, 1]
-//            backgroundGradientView.layer.mask = gradient
-        }
+  @IBOutlet var headlineTitleLabel: UILabel!
+  
+  @IBOutlet var headlineByLineLabel: UILabel!
+  
+  @IBOutlet var headlineDateTimeLabel: UILabel!
+
+  @IBOutlet var headlineSponsoredLabel: UILabel!
+  
+  @IBOutlet var titleBackgroundView: UIView! {
+    didSet {
+      titleBackgroundView.backgroundColor = UIColor.black
+      let gradient = CAGradientLayer()
+      gradient.frame = titleBackgroundView.bounds
+      gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+      gradient.locations = [0, 1]
+      titleBackgroundView.layer.mask = gradient
     }
+  }
+  @IBOutlet var headlineAbstractTextView: UITextView!
+  
     override func awakeFromNib() {
         super.awakeFromNib()
     }
