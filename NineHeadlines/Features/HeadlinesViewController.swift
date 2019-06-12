@@ -69,7 +69,8 @@ class HeadlinesViewController: UIViewController, LoadingCapable {
         tableView.estimatedRowHeight = 144.0
         tableView.rowHeight = UITableView.automaticDimension 
         tableView.separatorStyle = .none
-        
+        tableView.showsVerticalScrollIndicator = false
+        tableView.showsHorizontalScrollIndicator = false
     }
     
     // MARK: - private func
