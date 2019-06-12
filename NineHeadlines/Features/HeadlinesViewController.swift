@@ -19,6 +19,7 @@ class HeadlinesViewController: UIViewController, LoadingCapable {
     lazy var viewModel: HeadlinesViewModel = {
         return HeadlinesViewModel()
     }()
+    var refreshControl = UIRefreshControl()
     
     //MARK: - Event
     
@@ -41,6 +42,7 @@ class HeadlinesViewController: UIViewController, LoadingCapable {
                 guard let self = self else { return }
                 self.tableView.reloadData()
                 self.hideLoadingView()
+                self.refreshControl.endRefreshing()
             }
         }
         
@@ -71,6 +73,8 @@ class HeadlinesViewController: UIViewController, LoadingCapable {
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshHeadlines), for: .valueChanged)
     }
     
     // MARK: - private func
@@ -78,6 +82,10 @@ class HeadlinesViewController: UIViewController, LoadingCapable {
         let alert = UIAlertController(title: .alertTitleText, message: message, preferredStyle: .alert)
         alert.addAction( UIAlertAction(title: .alertButtonText, style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
+    }
+    
+    @objc private func refreshHeadlines() {
+        viewModel.refreshHeadlines()
     }
     
 }

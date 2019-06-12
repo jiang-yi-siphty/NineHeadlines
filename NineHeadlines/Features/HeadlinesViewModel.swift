@@ -70,4 +70,8 @@ class HeadlinesViewModel {
             return images.first?.url
         }
     }  
+    
+    func refreshHeadlines() {
+        store.fetchHeadlines()
+    }
 }

@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="HeadlineTableViewCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="10" reuseIdentifier="HeadlineTableViewCell" rowHeight="432" id="mX6-vv-nqW" customClass="HeadlineTableViewCell" customModule="NineHeadlines" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="HeadlineTableViewCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="10" reuseIdentifier="HeadlineTableViewCell" id="mX6-vv-nqW" customClass="HeadlineTableViewCell" customModule="NineHeadlines" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="432"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="HeadlineTabelViewCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mX6-vv-nqW" id="gMl-hy-o1u" customClass="HeadlineTableViewCell" customModule="NineHeadlines" customModuleProvider="target">
@@ -132,6 +132,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="height" secondItem="XcE-57-woo" secondAttribute="height" id="H94-pq-zqG"/>
+                </constraints>
             </tableViewCellContentView>
             <constraints>
                 <constraint firstItem="UDY-XD-JYs" firstAttribute="width" secondItem="mX6-vv-nqW" secondAttribute="width" id="BtZ-1H-XyM"/>
