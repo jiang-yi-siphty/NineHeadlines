@@ -73,3 +73,17 @@ enum ImageType: String, Codable {
     
 }
 
+extension RelatedImage {
+    
+    static func < (lhs: RelatedImage, rhs: RelatedImage) -> Bool {
+        return lhs.size < rhs.size
+    }
+    
+    var size: Float {
+        guard let width = self.width, width != 0, 
+            let height = self.height, height != 0 else {
+            return Float.greatestFiniteMagnitude
+        }
+        return width * height
+    }
+}

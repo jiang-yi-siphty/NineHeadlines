@@ -31,8 +31,7 @@ class HeadlinesStore {
     
     // MARK: Init
     init(apiClient: ApiClient = ApiClient()) {
-//        self.apiClient = apiClient
-        self.apiClient = MockApiClient() 
+        self.apiClient = apiClient
     }
 }
 
@@ -45,19 +44,15 @@ extension HeadlinesStore {
             switch result {
             case .success(let data):
                 guard let data = data else {
-                    self.alertMessage = "We run out of headlines..."
+                    self.alertMessage = .alertMessageNoAssetIssue
                     return 
                 }
+                let decoder = JSONDecoder()
                 do {
-                    let decoder = JSONDecoder()
-                    do {
-                        let responseModel = try decoder.decode(NewsResponse.self, from: data)
-                        self.headlines = responseModel.assets
-                    } catch {
-                        self.alertMessage = error.localizedDescription
-                    }
-                } catch let error {
-                    self.alertMessage = error.localizedDescription
+                    let responseModel = try decoder.decode(NewsResponse.self, from: data)
+                    self.headlines = responseModel.assets
+                } catch {
+                    self.alertMessage = error.localizedDescription + .alertMessageDecaodeIssue
                 }
             case .failure(let commonError):
                 self.hasCommonError?(commonError)
@@ -65,4 +60,9 @@ extension HeadlinesStore {
             
         }
     }
+}
+
+fileprivate extension String {
+    static let alertMessageDecaodeIssue = "Can't decode the response based on NewsResponse data model."
+    static let alertMessageNoAssetIssue = "We run out of headlines..."
 }

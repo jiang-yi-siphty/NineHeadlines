@@ -17,8 +17,8 @@ final class HeadlineTableViewCell: UITableViewCell {
   
     @IBOutlet var headlineImageView: UIImageView! {
         didSet {
-            guard let image = UIImage(named: "thumbnail") else {
-                fatalError("failed to load image of Thumbnail")
+            guard let image = UIImage(named: "newsPlaceholder") else {
+                fatalError("failed to load image of newsPlaceholder")
             }
             headlineImageView.image = image
         }

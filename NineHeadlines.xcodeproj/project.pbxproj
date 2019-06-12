@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A24B929122B0C07E00284CB2 /* LoadingCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24B929022B0C07E00284CB2 /* LoadingCapable.swift */; };
+		A24B929622B0DA8D00284CB2 /* UIImageView+AsyncLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24B929522B0DA8D00284CB2 /* UIImageView+AsyncLoading.swift */; };
 		A2536A5E22ADEE4400FC9CCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2536A5D22ADEE4400FC9CCB /* AppDelegate.swift */; };
 		A2536A6522ADEE4500FC9CCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2536A6422ADEE4500FC9CCB /* Assets.xcassets */; };
 		A2536A6822ADEE4500FC9CCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2536A6622ADEE4500FC9CCB /* LaunchScreen.storyboard */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		A24B929022B0C07E00284CB2 /* LoadingCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCapable.swift; sourceTree = "<group>"; };
+		A24B929522B0DA8D00284CB2 /* UIImageView+AsyncLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+AsyncLoading.swift"; sourceTree = "<group>"; };
 		A2536A5A22ADEE4400FC9CCB /* NineHeadlines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NineHeadlines.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2536A5D22ADEE4400FC9CCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2536A6422ADEE4500FC9CCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -96,6 +98,14 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		A24B929422B0DA6700284CB2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A24B929522B0DA8D00284CB2 /* UIImageView+AsyncLoading.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A2536A5122ADEE4300FC9CCB = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +127,7 @@
 		A2536A5C22ADEE4400FC9CCB /* NineHeadlines */ = {
 			isa = PBXGroup;
 			children = (
+				A24B929422B0DA6700284CB2 /* Extensions */,
 				A24B928D22B0BA4F00284CB2 /* Common */,
 				A2536A7022ADEE6A00FC9CCB /* DataLayer */,
 				A2536A6F22ADEE6000FC9CCB /* Features */,
@@ -321,6 +332,7 @@
 				A2D5537D22ADFA8B00423FB0 /* ApiService.swift in Sources */,
 				A286A8D322B00AC300D789D4 /* HeadlineTableViewCell.swift in Sources */,
 				A24B929122B0C07E00284CB2 /* LoadingCapable.swift in Sources */,
+				A24B929622B0DA8D00284CB2 /* UIImageView+AsyncLoading.swift in Sources */,
 				A2D5539022AE8C6E00423FB0 /* HeadlinesViewModel.swift in Sources */,
 				A2D5537B22ADF9EA00423FB0 /* ApiClient.swift in Sources */,
 			);

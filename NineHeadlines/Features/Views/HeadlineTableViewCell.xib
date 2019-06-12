@@ -22,13 +22,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="431.5"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="inB-C9-HoT">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="237.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="276"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="XPb-qN-03k">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="237.5"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="XPb-qN-03k">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="276"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" secondItem="XPb-qN-03k" secondAttribute="height" multiplier="3:2" id="g70-75-cUM"/>
+                                        </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UDY-XD-JYs">
-                                        <rect key="frame" x="0.0" y="108" width="414" height="129.5"/>
+                                        <rect key="frame" x="0.0" y="146.5" width="414" height="129.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VG2-rU-Dj0">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="129.5"/>
@@ -103,10 +106,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I4q-0q-Xd3">
-                                <rect key="frame" x="0.0" y="245.5" width="414" height="186"/>
+                                <rect key="frame" x="0.0" y="284" width="414" height="147.5"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASO-Ag-gRn">
-                                        <rect key="frame" x="8" y="8" width="398" height="170"/>
+                                        <rect key="frame" x="8" y="8" width="398" height="131.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">theAbstract: Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -124,7 +127,6 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="I4q-0q-Xd3" firstAttribute="leading" secondItem="cFJ-SS-Mf8" secondAttribute="leading" id="1eb-LB-9sW"/>
-                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="414" id="Ijg-n6-hWN"/>
                             <constraint firstAttribute="trailing" secondItem="I4q-0q-Xd3" secondAttribute="trailing" id="Nzt-Ff-fcY"/>
                         </constraints>
                     </stackView>
@@ -132,6 +134,7 @@
                 <constraints>
                     <constraint firstItem="cFJ-SS-Mf8" firstAttribute="leading" secondItem="gMl-hy-o1u" secondAttribute="leading" id="6To-uh-NYr"/>
                     <constraint firstItem="cFJ-SS-Mf8" firstAttribute="top" secondItem="gMl-hy-o1u" secondAttribute="top" id="PZM-iD-nRN"/>
+                    <constraint firstItem="inB-C9-HoT" firstAttribute="width" secondItem="gMl-hy-o1u" secondAttribute="width" id="luk-zc-ELs"/>
                     <constraint firstAttribute="trailing" secondItem="cFJ-SS-Mf8" secondAttribute="trailing" id="uf5-b4-Eml"/>
                     <constraint firstAttribute="bottom" secondItem="cFJ-SS-Mf8" secondAttribute="bottom" id="zcU-NN-7XG"/>
                 </constraints>

@@ -111,6 +111,10 @@ extension HeadlinesViewController: UITableViewDataSource, UITableViewDelegate {
         cell.headlineByLineLabel.text = asset?.byLine
         cell.headlineSponsoredLabel.isHidden = !(asset?.sponsored ?? false)
         cell.headlineAbstractTextView.text = asset?.theAbstract ?? ""
+        if let imageURL = viewModel.bestThumbnailImageURL(at: row) {
+            cell.headlineImageView.imageFromURL(imageURL, 
+                                                placeHolder: UIImage(named: "newsPlaceholder"))
+        } 
     }
 }
 

@@ -21,7 +21,7 @@ class HeadlinesViewModel {
     var numberOfRows: Int {
         return store.headlines?.count ?? 0
     }
-  
+    
     
     
     // MARK: Funcs
@@ -52,12 +52,23 @@ class HeadlinesViewModel {
             }
         }
     }
-
-  
-  func headline(at row: Int) -> Asset? {
-    guard row < store.headlines?.count ?? 0 else { return nil }
-    return store.headlines?[row]
-  }
     
     
+    func headline(at row: Int) -> Asset? {
+        guard row < store.headlines?.count ?? 0 else { return nil }
+        return store.headlines?[row]
+    }
+    
+    func bestThumbnailImageURL(at row: Int) -> URL? {
+        guard let relatedImages = store.headlines?[row].relatedImages else { return nil }
+        if let thumbnailImage = relatedImages.first(where: {$0.type == .thumbnail}) {
+            return thumbnailImage.url
+        } else {
+            // Comment: If there is no thumbnail image, we are going to find first smallest image
+            var images = relatedImages
+            images.sort(by: {$0 < $1})
+            return images.first?.url
+        }
+        return nil 
+    }  
 }
