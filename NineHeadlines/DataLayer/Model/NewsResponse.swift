@@ -42,6 +42,22 @@ struct RelatedImage: Codable {
     let width: Float?
     let height: Float?
     let photographer: String?
+    
+    // If we adopt Swift 5 and above, we don't need below initialzer: init(from decoder: Decoder).
+    // As, the Swift 5 can handle unexpected enum case very well. 
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decodeIfPresent(Int.self, forKey: .id)
+        url = try container.decodeIfPresent(URL.self, forKey: .url)
+        if let imageType = try? container.decodeIfPresent(ImageType.self, forKey: .type) {
+        	type = imageType
+        } else {
+            type = nil
+        }
+        width = try container.decodeIfPresent(Float.self, forKey: .width)
+        height = try container.decodeIfPresent(Float.self, forKey: .height)
+        photographer = try container.decodeIfPresent(String.self, forKey: .photographer)
+    }
 }
 
 enum ImageType: String, Codable {
@@ -53,5 +69,6 @@ enum ImageType: String, Codable {
     case articleLeadWide
     case afrArticleLead
     case afrArticleInline
+    
 }
 

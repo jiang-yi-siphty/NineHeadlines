@@ -31,7 +31,8 @@ class HeadlinesStore {
     
     // MARK: Init
     init(apiClient: ApiClient = ApiClient()) {
-        self.apiClient = apiClient
+//        self.apiClient = apiClient
+        self.apiClient = MockApiClient() 
     }
 }
 

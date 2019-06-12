@@ -17,6 +17,11 @@ class HeadlinesViewModel {
     var updated: (() -> Void)?
     var hasAlertMessage: ((String, Error?) -> Void)?
     
+    // MARK: TableView DataSource
+    var numberOfRows: Int {
+        return store.headlines?.count ?? 0
+    }
+    
     
     // MARK: Funcs
     init(_ store: HeadlinesStore = HeadlinesStore.shared) {
@@ -46,5 +51,11 @@ class HeadlinesViewModel {
             }
         }
     }
+    
+    func url(at indexPath: IndexPath) -> URL? {
+        guard indexPath.row < store.headlines?.count ?? 0 else { return nil }
+        return store.headlines?[indexPath.row].url 
+    }
+    
     
 }

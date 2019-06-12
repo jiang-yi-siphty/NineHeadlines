@@ -6,6 +6,11 @@
 //  Copyright © 2019 Siphty Pty Ltd. All rights reserved.
 //
 
+/* Comment: 
+ This unit test is created after data layer coding, and before UI and bussiness logic coding.
+ It helped me to varify the data model and Server manager are working well.
+ */
+
 import XCTest
 @testable import NineHeadlines
 
@@ -29,7 +34,7 @@ class ApiClientAndModelTests: XCTestCase {
         var responseModel: NewsResponse? = nil
         let expectation = self.expectation(description: "Parsing Succeeds")
         var commonError: CommonError? = nil
-        var canDecode: Bool = false 
+        var canDecode: Bool = true 
         
         // When
         realApiClient.networkRequest(.nineHeadlines) { apiResult in
@@ -40,7 +45,7 @@ class ApiClientAndModelTests: XCTestCase {
                     do {
                         responseModel = try decoder.decode(NewsResponse.self, from: data)
                     } catch {
-                        canDecode = true
+                        canDecode = false
                     }
                 }
             case .failure(let error):
@@ -68,7 +73,7 @@ class ApiClientAndModelTests: XCTestCase {
         var responseModel: NewsResponse? = nil
         let expectation = self.expectation(description: "Parsing Succeeds")
         var commonError: CommonError? = nil
-        var canDecode: Bool = false 
+        var canDecode: Bool = true 
         
         // When
         mockApiClient.networkRequest(.nineHeadlines) { apiResult in
@@ -79,7 +84,7 @@ class ApiClientAndModelTests: XCTestCase {
                     do {
                         responseModel = try decoder.decode(NewsResponse.self, from: data)
                     } catch {
-                        canDecode = true
+                        canDecode = false
                     }
                 }
             case .failure(let error):
@@ -103,7 +108,7 @@ class ApiClientAndModelTests: XCTestCase {
         var responseModel: NewsResponse? = nil
         let expectation = self.expectation(description: "Parsing Succeeds")
         var commonError: CommonError? = nil
-        var canDecode: Bool = false 
+        var canDecode: Bool = true 
         
         // When
         mockApiClient.networkRequest(.nineHeadlines) { apiResult in
@@ -168,5 +173,3 @@ class ApiClientAndModelTests: XCTestCase {
         waitForExpectations(timeout: 1.0) 
     }
 }
-
-

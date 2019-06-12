@@ -10,7 +10,8 @@ import Foundation
 
 class ApiClient: ApiService {
     
-    func networkRequest(_ config: ApiConfig, completionHandler: @escaping ((Result<Data?, CommonError>) -> Void)) {
+    func networkRequest(_ config: ApiConfig, 
+                        completionHandler: @escaping ((Result<Data?, CommonError>) -> Void)) {
         networkRequestByNSURLSession(config, completionHandler: completionHandler)
     }
     
@@ -18,8 +19,12 @@ class ApiClient: ApiService {
 
 extension ApiClient {
     
-    // We can use any of other network SDK to replace this , such as Alamofire or old NSURLConnection or AFNetworking
-    fileprivate func networkRequestByNSURLSession(_ config: ApiConfig, completionHandler: @escaping ((Result<Data?, CommonError>) -> Void)) {
+    /* Comment: 
+     	We can use any of other network SDK to replace this , such as Alamofire 
+     	or old NSURLConnection or AFNetworking
+	 */
+    fileprivate func networkRequestByNSURLSession(_ config: ApiConfig, 
+                                                  completionHandler: @escaping ((Result<Data?, CommonError>) -> Void)) {
         URLCache.shared.removeAllCachedResponses()
         let url = config.getFullUrl()
         let session = URLSession.shared
@@ -37,7 +42,23 @@ extension ApiClient {
     
 }
 
+/* Comment: 
+ 	Because I can't use Swift 5's new feature, I replicate the Swift 5's Result
+ 	type.
+ */
+enum Result<Success, Failure> where Failure : Error {
+    
+    /// A success, storing a `Success` value.
+    case success(Success)
+    
+    /// A failure, storing a `Failure` value.
+    case failure(Failure) 
+    
+}
 
+/* Comment: 
+ 	We can extend CommonError case for new errors in the future develpment.
+ */
 enum CommonError: Error {
     case fileError(_ jsonFileName: String?, error: Error)
     case customError(_ errorMessage: String)
