@@ -11,6 +11,7 @@
  In this ViewController, I am not using Storyboard or Xib to build the UI to showoff my programmatic UI development skill. However, I will use Xib to build the TableViewCell to showoff my autolayout skill in interface builder.
  */
 import UIKit
+import Kingfisher
 
 class HeadlinesViewController: UIViewController, LoadingCapable {
     
@@ -119,9 +120,14 @@ extension HeadlinesViewController: UITableViewDataSource, UITableViewDelegate {
         }
         cell.headlineAbstractTextView.text = asset?.theAbstract ?? ""
         if let imageURL = viewModel.bestThumbnailImageURL(at: row) {
-            cell.headlineImageView.imageFromURL(imageURL, 
-                                                placeHolder: UIImage(named: "newsPlaceholder"))
-        } 
+          cell
+            .headlineImageView.kf
+            .setImage(with: imageURL,
+                      placeholder:  UIImage(named: "newsPlaceholder")) {[weak self] image, error, cacheType, imageURL in
+                        self?.tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .none)
+          }
+        }
+        cell.layoutIfNeeded()
         
     }
 }
