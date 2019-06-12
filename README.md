@@ -14,7 +14,7 @@ I have introduced cocoapods in to this project. I have include pod files in this
 
 ### Architeture
 
-MVVM without RxSwift. This projest doesn't require complicated user interactives or event reaction, thus, it only has simple data binding.  
+MVVM without RxSwift. This projest doesn't require complicated user interactives or event reaction, thus, it only has simple data binding.  Here I am using MVVM+Store architecture. 
 
 ### Model
 I use Swift's own Codable to build the data model manually. I haven't decode all the key/value in the JSON reponse as many of them are never be used in this project.  
